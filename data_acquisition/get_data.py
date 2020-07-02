@@ -24,6 +24,11 @@ class plotter():
         photo, _ = Data.Photometry(sim='lgal', noise= 'none', lib='bc03', sample = 'mini_mocha') 
         self.meta_data = meta
         self.prior = self.f['prior_range']
+
+        if 'postproc' in self.data_dir:
+            self.sfr = True
+        else:
+            self.sfr = False
         
         
     def plot_raw(self,param_idx,all_data = False):
@@ -128,71 +133,88 @@ class plotter():
             
     def report_median(self,param_idx,all_data = False):
         keys = list(self.f.keys())
-        
-        num = -1
-        for k in keys:
-            if 'mcmc_chain' in k:
-                num += 1
-        if not all_data:
-            self.mcmc_data = self.f[f'mcmc_chain{num}'][...][:,:,param_idx]
-        else:
-            self.mcmc_data = np.array([])
-            for idx in range(num+1):
-                self.mcmc_data = np.append(self.mcmc_data,self.f[f'mcmc_chain{idx}'][...][:,:,param_idx])
-        med = np.median(self.mcmc_data)
+        if not self.sfr:
+            num = -1
+            for k in keys:
+                if 'mcmc_chain' in k:
+                    num += 1
+            if not all_data:
+                self.mcmc_data = self.f[f'mcmc_chain{num}'][...][:,:,param_idx]
+            else:
+                self.mcmc_data = np.array([])
+                for idx in range(num+1):
+                    self.mcmc_data = np.append(self.mcmc_data,self.f[f'mcmc_chain{idx}'][...][:,:,param_idx])
+            med = np.median(self.mcmc_data)
+        elif self.sfr:
+            self.mcmc_data = self.f['mcmc_chain'][...]
+            med = np.median(self.mcmc_data[:,param_idx])
+
         return med
 
+    def close(self):
+        if self.f:
+            self.f.close()
+        else:
+            pass
+
+        return None
+
 if __name__ == '__main__':
-	data_path = sys.argv[1]
-	num_walker = int(sys.argv[2])
-	sim = sys.argv[3]
-	spec_or_photo = sys.argv[4]
-	noise = sys.argv[5]
-	model = sys.argv[6]
-	
-	param_medians = {}
-	
-	sample_f_name = f'{sim}.{spec_or_photo}.noise_{noise}.{model}.0.mcmc.hdf5'
-	sample_path = os.path.join(data_path,sample_f_name)
-	f_sample = h5py.File(sample_path,'r')
-	param_list = np.array(f_sample['theta_names'][...]).astype(str)
-    f_sample.close()
+    data_path = sys.argv[1]
+    num_walker = int(sys.argv[2])
+    sim = sys.argv[3]
+    spec_or_photo = sys.argv[4]
+    noise = sys.argv[5]
+    model = sys.argv[6]
+    mcmc_sfr = sys.argv[7]
 
-	for n, param in enumerate(param_list):
-		param_med = []
-		for i in range(97):
-			try:
-				obj = plotter(num_walker,f'{data_path}/{sim}.{spec_or_photo}.noise_{noise}.{model}.{i}.mcmc.hdf5',i)
-				med = obj.report_median(n,True)
-				param_med.append(med)
-			except:
-				print(f'igal{i} file not found')
-				param_med.append('N/A')
-		param_medians[param] = param_med
+    save_path = '/global/homes/k/kgb0255/packages/gqp_mc/doc/data_list'
 
-	sfr_param_medians = {}
+    if mcmc_sfr == 'mcmc' or mcmc_sfr == 'both':
+        param_medians = {}
+        
+        sample_f_name = f'{sim}.{spec_or_photo}.noise_{noise}.{model}.0.mcmc.hdf5'
+        sample_path = os.path.join(data_path,sample_f_name)
+        f_sample = h5py.File(sample_path,'r')
+        param_list = np.array(f_sample['theta_names'][...]).astype(str)
+        f_sample.close()
 
-	sample_sfr_f_name = f'{sim}.{spec_or_photo}.noise_{noise}.{model}.0.postproc.hdf5'
-	sfr_path = os.path.join(data_path,sample_sfr_f_name)
-	f_sample_sfr = h5py.File(sfr_path,'r')
-	sfr_param_list = np.array(f_sample_sfr['theta_names'][...]).astype(str)
-    f_sample_sfr.close()
+        for n, param in enumerate(param_list):
+            param_med = []
+            for i in range(97):
+                try:
+                    obj = plotter(num_walker,f'{data_path}/{sim}.{spec_or_photo}.noise_{noise}.{model}.{i}.mcmc.hdf5',i)
+                    med = obj.report_median(n,True)
+                    obj.close()
+                    param_med.append(med)
+                except:
+                    print(f'igal{i} file not found')
+                    param_med.append('N/A')
+            param_medians[param] = param_med
 
-	for n, param in enumerate(sfr_param_list):
-		sfr_param_med = []
-		for i in range(97):
-			try:
-				obj = plotter(num_walker,f'{data_path}/{sim}.{spec_or_photo}.noise_{noise}.{model}.{i}.postproc.hdf5',i)
-				med = obj.report_median(n,True)
-				sfr_param_med.append(med)
-			except:
-				print(f'igal{i} file not found')
-				sfr_param_med.append('N/A')
-		sfr_param_medians[param] = sfr_param_med
+        f_mcmc_name = f'{sim}.{spec_or_photo}.noise_{noise}.{model}.mcmc.npy'
+        np.save(os.path.join(save_path,f_mcmc_name),param_medians)
+    elif mcmc_sfr == 'sfr' or mcmc_sfr =='both':
+        sfr_param_medians = {}
 
-	save_path = '/global/homes/k/kgb0255/packages/gqp_mc/doc/data_list'
-	f_mcmc_name = f'{sim}.{spec_or_photo}.noise_{noise}.{model}.mcmc.npy'
-	f_sfr_name = f'{sim}.{spec_or_photo}.noise_{noise}.{model}.sfr.npy'
+        sample_sfr_f_name = f'{sim}.{spec_or_photo}.noise_{noise}.{model}.0.postproc.hdf5'
+        sfr_path = os.path.join(data_path,sample_sfr_f_name)
+        f_sample_sfr = h5py.File(sfr_path,'r')
+        sfr_param_list = np.array(f_sample_sfr['theta_names'][...]).astype(str)
+        f_sample_sfr.close()
 
-	np.save(os.path.join(save_path,f_mcmc_name),param_medians)
-	np.save(os.path.join(save_path,f_sfr_name),sfr_param_medians)
+        for n, param in enumerate(sfr_param_list):
+            sfr_param_med = []
+            for i in range(97):
+                try:
+                    obj = plotter(num_walker,f'{data_path}/{sim}.{spec_or_photo}.noise_{noise}.{model}.{i}.postproc.hdf5',i)
+                    med = obj.report_median(n,True)
+                    obj.close()
+                    sfr_param_med.append(med)
+                except:
+                    print(f'igal{i} file not found')
+                    sfr_param_med.append('N/A')
+            sfr_param_medians[param] = sfr_param_med
+
+        f_sfr_name = f'{sim}.{spec_or_photo}.noise_{noise}.{model}.sfr.npy'
+        np.save(os.path.join(save_path,f_sfr_name),sfr_param_medians)

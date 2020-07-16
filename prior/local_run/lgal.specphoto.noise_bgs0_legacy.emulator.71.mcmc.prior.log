@@ -1,0 +1,84 @@
+Walkers initialized out of priors. Walker index: 0, Prior index: 1, Walker position: 1.0000394675269841
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 1, Prior index: 7, Walker position: -0.000589313958840485
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 2, Prior index: 1, Walker position: 1.0000686489071338
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 2, Prior index: 7, Walker position: -0.00029018252606498405
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 3, Prior index: 1, Walker position: 1.000012241661432
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 3, Prior index: 7, Walker position: -0.0004747966619498881
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 5, Prior index: 1, Walker position: 1.0000338453296502
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 6, Prior index: 1, Walker position: 1.0000511089942759
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 6, Prior index: 7, Walker position: -0.0001866851393411308
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 7, Prior index: 1, Walker position: 1.0000896451618475
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 7, Prior index: 7, Walker position: -0.000648213685890797
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 8, Prior index: 7, Walker position: -6.232428455201557e-05
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 9, Prior index: 7, Walker position: -0.00020185319697132783
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 10, Prior index: 7, Walker position: -0.0004834392757419102
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 13, Prior index: 7, Walker position: -0.00010609410214195884
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 14, Prior index: 7, Walker position: -8.658567652052154e-05
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 15, Prior index: 1, Walker position: 1.0000345400042052
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 16, Prior index: 1, Walker position: 1.0000676374913164
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 16, Prior index: 7, Walker position: -0.0001860448094578126
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 17, Prior index: 1, Walker position: 1.000057374319644
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 18, Prior index: 7, Walker position: -0.0003120998450624019
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 19, Prior index: 7, Walker position: -0.00010607603506592676
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 20, Prior index: 1, Walker position: 1.0000802672032383
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 22, Prior index: 1, Walker position: 1.000036063695411
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 23, Prior index: 1, Walker position: 1.0000903319586312
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 23, Prior index: 7, Walker position: -4.1481437811102806e-05
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 24, Prior index: 7, Walker position: -7.717878399645577e-06
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 25, Prior index: 1, Walker position: 1.000122720891675
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 25, Prior index: 7, Walker position: -0.0002922095087294557
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 26, Prior index: 1, Walker position: 1.0000498192406344
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 26, Prior index: 7, Walker position: -0.0005443455990199814
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 27, Prior index: 7, Walker position: -0.00027828417200603925
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 29, Prior index: 1, Walker position: 1.0000153017042022
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 29, Prior index: 7, Walker position: -0.00013455757369266577
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 31, Prior index: 1, Walker position: 1.0000855817220553
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 31, Prior index: 7, Walker position: -0.0003900690823400204
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 33, Prior index: 7, Walker position: -0.0003348162164705338
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 34, Prior index: 7, Walker position: -1.2378645672744365e-06
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 36, Prior index: 7, Walker position: -0.00021483378685779818
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 37, Prior index: 1, Walker position: 1.0001233927886928
+Prior range (0.0, 1.0)
+Walkers initialized out of priors. Walker index: 37, Prior index: 7, Walker position: -7.280550757743045e-05
+Prior range (0.0, 3.0)
+Walkers initialized out of priors. Walker index: 38, Prior index: 7, Walker position: -7.4782536467933055e-06
+Prior range (0.0, 3.0)

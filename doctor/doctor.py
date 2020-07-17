@@ -120,8 +120,8 @@ class Doctor():
         if spec_or_photo == 'photo':
             param_list = np.array(['logmstar', 'beta1_sfh', 'beta2_sfh', 'beta3_sfh', 'beta4_sfh', 'gamma1_zh', 'gamma2_zh', 'tau'])
         else:
-            param_list = np.array(['logmstar' 'beta1_sfh' 'beta2_sfh' 'beta3_sfh' 'beta4_sfh' 'gamma1_zh'
-                                    'gamma2_zh' 'tau' 'f_fiber'])
+            param_list = np.array(['logmstar', 'beta1_sfh', 'beta2_sfh', 'beta3_sfh', 'beta4_sfh', 'gamma1_zh',
+                                    'gamma2_zh', 'tau', 'f_fiber'])
         param_medians = {}
         param_up_sigmas = {}
         param_lo_sigmas = {}
